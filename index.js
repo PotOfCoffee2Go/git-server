@@ -18,8 +18,9 @@ process.argv.slice(2).forEach((arg) => {
 	}
 });
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const os = require('node:os');
+const path = require('node:path');
 
 const hue = (txt, nbr=214) => `\x1b[38;5;${nbr}m${txt}\x1b[0m`;
 const auth = (users, inName, inPw) => {
@@ -43,7 +44,7 @@ const http = require('http'),
 	httpProxy = require('http-proxy');
 httpProxy.createProxyServer({target:'http://localhost:7005'})
 	.listen({host:'0.0.0.0', port: proxyport});
-console.log(hue(`Proxy server on http://rpi5:8090 -> http://localhost:7005`));
+console.log(hue(`Proxy server on http://${os.hostname()}:8090 -> http://localhost:7005`));
 
 // Repo server
 const repos = new Server(path.normalize(path.resolve('./', 'repos')), {
