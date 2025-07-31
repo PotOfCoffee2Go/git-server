@@ -1,5 +1,5 @@
 {
-  "name": "git-server",
+  "name": "@PotOfCoffee2Go/git-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,8 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "PotOfCoffee2Go",
+  "license": "MIT",
   "type": "commonjs",
   "dependencies": {
     "http-proxy": "github:PotOfCoffee2Go/node-http-proxy",
