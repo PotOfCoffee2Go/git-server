@@ -56,7 +56,7 @@ const repos = new Server(path.normalize(path.resolve('./', 'repos')), {
 				if (users && auth(users, username, password)) {
 					next();
 				} else {
-					next('wrong password');
+					next(hue('wrong password',9));
 				}
 			});
 		} else {
