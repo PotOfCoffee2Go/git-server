@@ -4,13 +4,17 @@ Git server for local network use.
 
 Install
 ```
-npm install @PotOfCoffee2Go/git-server.git
+git clone https://github.com/PotOfCoffee2Go/git-server.git
+cd git-server
+npm install
 npm start
 ```
+**Meanwhile... in a separate terminal window**
 
-Create a local project directory with and package.json:
+Create a local project directory and add a package.json:
 ```
-mkdir my-project && cd my-project
+mkdir my-project
+cd my-project
 npm init -y
 ```
 Then do git things:
