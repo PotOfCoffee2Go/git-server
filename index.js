@@ -40,8 +40,7 @@ if (!users) {
 }
 
 // Create proxy server with access by net devices.
-const http = require('http'),
-	httpProxy = require('http-proxy');
+const http = require('http'), httpProxy = require('http-proxy');
 httpProxy.createProxyServer({target:'http://localhost:7005'})
 	.listen({host:'0.0.0.0', port: proxyport});
 console.log(hue(`Proxy server on http://${os.hostname()}:8090 -> http://localhost:7005`));
