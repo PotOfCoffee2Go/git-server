@@ -1,4 +1,4 @@
-// You Can Use The Commands Below To Generate A Self Signed Certificate For Use With This Tutorial
+// You Can Use The Commands Below To Generate A Self Signed Certificate For Use by the git server
 // These Commands Require That You have 'openssl' installed on your system
 // openssl genrsa -out privatekey.pem 1024
 // openssl req -new -key privatekey.pem -out certrequest.csr
@@ -10,7 +10,6 @@ const path = require('node:path');
 
 // ---------
 // Configuration
-const repoDir = './repos';
 
 // Recommend leaving as 'http'
 //  - will be localhost so access only allowed from machine running the server
@@ -19,12 +18,16 @@ const port = 7005;
 const key = null;  // key: fs.readFileSync(path.resolve(__dirname, 'privatekey.pem')),
 const cert = null; // cert: fs.readFileSync(path.resolve(__dirname, 'certificate.pem')),
 
+// Directory that contains the repositories
+const repoDir = './repos';
+
 // Proxy server front-ends the repo server - network access is thru the proxy
 const allowNetworkAccess = true; // false = do not start proxy server
 const proxyhost = '0.0.0.0';
 const proxyport = 8090; // note - is eighty-'ninety'
 
 // users.json - if exists else use demo users
+// Format of data in the JSON file is array of user/passwords as shown below
 var users = fs.existsSync('./users.json') ? require('./users.json') : false;
 if (!users) {
 	users = [ 
@@ -42,10 +45,10 @@ const hue = (txt, nbr=214) => `\x1b[38;5;${nbr}m${txt}\x1b[0m`;
 const auth = (users, inName, inPw) => {
 	return users.find(usr => usr.name === inName && usr.password === inPw);
 }
-// authenticate a user
+// Authenticate a user
 const authenticate = ({ type, repo, user, headers }, next) => {
 	console.log(type, repo, headers);
-	if (type == 'push') {
+	if (type == 'push') { // only authenticated users allowed to push
 		user((username, password) => {
 			if (users && auth(users, username, password)) {
 				next();
@@ -53,7 +56,7 @@ const authenticate = ({ type, repo, user, headers }, next) => {
 				next(hue('wrong password',9));
 			}
 		});
-	} else { // not a push - so allow git command
+	} else { // not a push - so allow all user access to git command
 		next();
 	}
 }
@@ -75,7 +78,7 @@ const repoPath = path.normalize(path.resolve(repoDir));
 const { Git: Server } = require('node-git-server');
 const repos = new Server(repoPath, { authenticate, autoCreate: true });
 
-repos.listen( port, { type:protocol, key, cert }, (error) => {
+repos.listen( port, { type: protocol, key, cert }, (error) => {
 	if (error) {
 		return console.error(hue(`failed to start git-server because of error ${error}`));
 	}
@@ -91,7 +94,7 @@ repos.listen( port, { type:protocol, key, cert }, (error) => {
 });
 
 // ---------
-// Event listeners
+// git command / event listeners
 repos.on('push', (push) => {
 	console.log(`push ${push.repo} / ${push.commit} ( ${push.branch} )`);
 	repos.list((err, results) => {
