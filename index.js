@@ -4,32 +4,26 @@
 // openssl req -new -key privatekey.pem -out certrequest.csr
 // openssl x509 -req -in certrequest.csr -signkey privatekey.pem -out certificate.pem
 
-const port = 7005;
-const proxyport = 8090;
-
-let type = 'http';
-
-process.argv.slice(2).forEach((arg) => {
-	switch (arg) {
-		case 'https':
-		case '--https':
-			type = 'https';
-			break;
-	}
-});
-
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 
-const hue = (txt, nbr=214) => `\x1b[38;5;${nbr}m${txt}\x1b[0m`;
-const auth = (users, inName, inPw) => {
-	return users.find(usr => usr.name === inName && usr.password === inPw);
-}
+// ---------
+// Configuration
+const repoDir = './repos';
 
-const { Git: Server } = require('node-git-server');
+// Recommend leaving as 'http'
+//  - will be localhost so access only allowed from machine running the server
+const protocol = 'http'; // or https
+const port = 7005;
+const key = null;  // key: fs.readFileSync(path.resolve(__dirname, 'privatekey.pem')),
+const cert = null; // cert: fs.readFileSync(path.resolve(__dirname, 'certificate.pem')),
 
-// users.json - if exists users who can 'push' else demo users
+// Proxy server front-ends the repo server - network access is thru the proxy
+const proxyhost = '0.0.0.0';
+const proxyport = 8090; // note - is eighty-'ninety'
+
+// users.json - if exists else use demo users
 var users = fs.existsSync('./users.json') ? require('./users.json') : false;
 if (!users) {
 	users = [ 
@@ -39,35 +33,64 @@ if (!users) {
 	];
 }
 
-// Create proxy server with access by net devices.
-const http = require('http'), httpProxy = require('http-proxy');
+// ---------
+// Helpers
+// Color log messages
+const hue = (txt, nbr=214) => `\x1b[38;5;${nbr}m${txt}\x1b[0m`;
+// Lookup user/passwords
+const auth = (users, inName, inPw) => {
+	return users.find(usr => usr.name === inName && usr.password === inPw);
+}
+// authenticate a user
+const authenticate = ({ type, repo, user, headers }, next) => {
+	console.log(type, repo, headers);
+	if (type == 'push') {
+		user((username, password) => {
+			if (users && auth(users, username, password)) {
+				next();
+			} else {
+				next(hue('wrong password',9));
+			}
+		});
+	} else { // not a push - so allow git command
+		next();
+	}
+}
+
+// ---------
+// Servers
+// Proxy server allows access by network devices
+const http = require('http')
+const httpProxy = require('http-proxy');
+
 httpProxy.createProxyServer({target:'http://localhost:7005'})
-	.listen({host:'0.0.0.0', port: proxyport});
-console.log(hue(`Proxy server on http://${os.hostname()}:8090 -> http://localhost:7005`));
+	.listen({host: proxyhost, port: proxyport});
+console.log(hue(`Proxy server on http://${os.hostname()}:${proxyport} -> http://localhost:${port}`));
 
 // Repo server
-const repos = new Server(path.normalize(path.resolve('./', 'repos')), {
-	autoCreate: true,
-	authenticate: ({ type, repo, user, headers }, next) => {
-		console.log(type, repo, headers); // eslint-disable-line
-		if (type == 'push') {
-			user((username, password) => {
-				if (users && auth(users, username, password)) {
-					next();
-				} else {
-					next(hue('wrong password',9));
-				}
-			});
+const repoPath = path.normalize(path.resolve(repoDir));
+const { Git: Server } = require('node-git-server');
+const repos = new Server(repoPath, { authenticate, autoCreate: true });
+
+repos.listen( port, { type:protocol, key, cert }, (error) => {
+	if (error) {
+		return console.error(hue(`failed to start git-server because of error ${error}`));
+	}
+	console.log(hue(`node-git-server running at ${protocol}://localhost:${port}`));
+	console.log(hue(`Repositories in directory: ${repoPath}`));
+	repos.list((err, result) => {
+		if (!result) {
+			console.log('No repositories available...');
 		} else {
-			// Check these credentials are correct for this user.
-			next();
+			console.log(result);
 		}
-	},
+	});
 });
 
+// ---------
+// Event listeners
 repos.on('push', (push) => {
-	console.log(`push ${push.repo} / ${push.commit} ( ${push.branch} )`); // eslint-disable-line
-
+	console.log(`push ${push.repo} / ${push.commit} ( ${push.branch} )`);
 	repos.list((err, results) => {
 		push.log(' ');
 		push.log('Hey!');
@@ -82,30 +105,7 @@ repos.on('push', (push) => {
 });
 
 repos.on('fetch', (fetch) => {
-	console.log(`username ${fetch.username}`); // eslint-disable-line
-	console.log(`fetch ${fetch.repo}/${fetch.commit}`); // eslint-disable-line
+	console.log(`username ${fetch.username}`);
+	console.log(`fetch ${fetch.repo}/${fetch.commit}`);
 	fetch.accept();
 });
-
-repos.listen(
-	port,
-	{
-		type,
-		key: fs.readFileSync(path.resolve(__dirname, 'privatekey.pem')),
-		cert: fs.readFileSync(path.resolve(__dirname, 'certificate.pem')),
-	},
-	(error) => {
-		if (error)
-			return console.error(
-				`failed to start git-server because of error ${error}`
-			); // eslint-disable-line
-		console.log(`node-git-server running at ${type}://localhost:${port}`); // eslint-disable-line
-		repos.list((err, result) => {
-			if (!result) {
-				console.log('No repositories available...'); // eslint-disable-line
-			} else {
-				console.log(result); // eslint-disable-line
-			}
-		});
-	}
-);

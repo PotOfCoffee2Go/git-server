@@ -25,6 +25,7 @@ git remote add git-server http://42:42@localhost:8090/my-project.git
 git add .
 git commit -am "Initial commit"
 git push -u git-server main
+git remote show git-server
 ```
 the 'my-project.git' repo will be automatically created containing the package.json
 
