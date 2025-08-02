@@ -1,16 +1,25 @@
 closer: poc2go-tab-closer
 created: 20250727020817447
 list: welcome-intro
-modified: 20250802131621349
+modified: 20250802163744114
 title: Welcome
 type: text/vnd.tiddlywiki
 
-<div style="text-align: center;">
-
-<$image source="git-logo.png" width="80px" />
-
+<div style="float:left;padding:4px;">
+<a href="https://git-scm.com/" target="_blank"><$image source="git-logo.png" width="60px"/></a> 
 </div>
 
+<div style="float:right;padding:4px;">
+<a href="https://nodejs.org/en/" target="_blank"><$image source="node-js-logo.png" width="90px"/></a> 
+</div>
+
+<div style="text-align:center;font-size:2em;">
+<a href="https://github.com/PotOfCoffee2Go/git-server" target="_blank" style="text-decoration:none;">
+git-server
+</a>
+</div>
+
+<div style="clear:both;" />
 
 <<tabs "[list[Welcome!!closer]]" "" "$:/state/tab/twgist-welcome-tabs">>
 

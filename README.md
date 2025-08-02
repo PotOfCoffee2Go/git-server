@@ -2,7 +2,7 @@
 
 Git server for local network use.
 
-See [@potofcoffee2go/git-server github-pages](https://potofcoffee2go.github.io/git-server/) for more details. 
+See @potofcoffee2go/git-server [github-page](https://potofcoffee2go.github.io/git-server/) for more details. 
 
 Install
 ```

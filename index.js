@@ -1,22 +1,14 @@
-// You Can Use The Commands Below To Generate A Self Signed Certificate For Use by the git server
-// These Commands Require That You have 'openssl' installed on your system
-// openssl genrsa -out privatekey.pem 1024
-// openssl req -new -key privatekey.pem -out certrequest.csr
-// openssl x509 -req -in certrequest.csr -signkey privatekey.pem -out certificate.pem
-
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 
-// ---------
+// --------------------------------
 // Configuration
 
 // Recommend leaving as 'http'
 //  - will be localhost so access only allowed from machine running the server
 const protocol = 'http'; // or https
 const port = 7005;
-const key = null;  // key: fs.readFileSync(path.resolve(__dirname, 'privatekey.pem')),
-const cert = null; // cert: fs.readFileSync(path.resolve(__dirname, 'certificate.pem')),
 
 // Directory that contains the repositories
 const repoDir = './repos';
@@ -37,7 +29,7 @@ if (!users) {
 	];
 }
 
-// ---------
+// --------------------------------
 // Helpers
 // Color log messages
 const hue = (txt, nbr=214) => `\x1b[38;5;${nbr}m${txt}\x1b[0m`;
@@ -78,7 +70,7 @@ const repoPath = path.normalize(path.resolve(repoDir));
 const { Git: Server } = require('node-git-server');
 const repos = new Server(repoPath, { authenticate, autoCreate: true });
 
-repos.listen( port, { type: protocol, key, cert }, (error) => {
+repos.listen( port, { type: protocol }, (error) => {
 	if (error) {
 		return console.error(hue(`failed to start git-server because of error ${error}`));
 	}
