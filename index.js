@@ -20,6 +20,7 @@ const key = null;  // key: fs.readFileSync(path.resolve(__dirname, 'privatekey.p
 const cert = null; // cert: fs.readFileSync(path.resolve(__dirname, 'certificate.pem')),
 
 // Proxy server front-ends the repo server - network access is thru the proxy
+const allowNetworkAccess = true; // false = do not start proxy server
 const proxyhost = '0.0.0.0';
 const proxyport = 8090; // note - is eighty-'ninety'
 
@@ -60,12 +61,14 @@ const authenticate = ({ type, repo, user, headers }, next) => {
 // ---------
 // Servers
 // Proxy server allows access by network devices
-const http = require('http')
-const httpProxy = require('http-proxy');
+if (allowNetworkAccess) {
+	const http = require('http')
+	const httpProxy = require('http-proxy');
 
-httpProxy.createProxyServer({target:'http://localhost:7005'})
-	.listen({host: proxyhost, port: proxyport});
-console.log(hue(`Proxy server on http://${os.hostname()}:${proxyport} -> http://localhost:${port}`));
+	httpProxy.createProxyServer({target:'http://localhost:7005'})
+		.listen({host: proxyhost, port: proxyport});
+	console.log(hue(`Proxy server on http://${os.hostname()}:${proxyport} -> http://localhost:${port}`));
+}
 
 // Repo server
 const repoPath = path.normalize(path.resolve(repoDir));
