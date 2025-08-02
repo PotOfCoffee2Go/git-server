@@ -1,0 +1,15 @@
+.mono {
+  font-family: monospace;
+}
+.poc2go-console {
+  font-family: monospace;
+  font-size: .9em;
+  background: black;
+  overflow-x: auto;
+}
+.tc-tab-buttons {
+  font-size: 103%;
+}
+summary {
+  font-size: 105%;
+}

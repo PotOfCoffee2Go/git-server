@@ -1,0 +1,20 @@
+closer: poc2go-tab-closer
+created: 20250727020817447
+list: welcome-intro
+modified: 20250802131621349
+title: Welcome
+type: text/vnd.tiddlywiki
+
+<div style="text-align: center;">
+
+<$image source="git-logo.png" width="80px" />
+
+</div>
+
+
+<<tabs "[list[Welcome!!closer]]" "" "$:/state/tab/twgist-welcome-tabs">>
+
+<<tabs "[list[Welcome!!list]]" "welcome-intro" "$:/state/tab/twgist-welcome-tabs">>
+
+@@color:aqua;border:1px solid aqua;border-radius:6px;font-size:.9em; &nbsp;  [[Top|Welcome]] &nbsp; @@
+
