@@ -1,7 +1,7 @@
 closer: poc2go-tab-closer
 created: 20250727020817447
 list: welcome-intro welcome-usecase welcome-install welcome-usage
-modified: 20250803152212361
+modified: 20250803171226759
 title: Welcome
 type: text/vnd.tiddlywiki
 
@@ -15,14 +15,18 @@ type: text/vnd.tiddlywiki
 
 <div style="text-align:center;font-size:2em;">
 <a href="https://github.com/PotOfCoffee2Go/git-server" target="_blank" style="text-decoration:none;">
-git-server
+{{$:/core/images/github|24px}} git-server
 </a>
 <div style="opacity:.6;index:100;margin-top:-4em;">
 Draft
 </div>
 </div>
 
-<div style="clear:both;" />
+<div class="mono" style="clear:both;text-align:center;margin: 0 0 -2em -2em;">
+
+Node.js Git Server
+
+</div>
 
 <<tabs "[list[Welcome!!closer]]" "" "$:/state/tab/welcome-tabs">>
 

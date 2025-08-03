@@ -1,6 +1,6 @@
 caption: Install
 created: 20250802212314654
-modified: 20250802223527530
+modified: 20250803165724523
 title: welcome-install
 type: text/vnd.tiddlywiki
 
@@ -30,6 +30,4 @@ The system will start two servers; the git server and a proxy server which route
 ** always starts up with localhost access only
 * `http://<hostname>:7000` is the proxy server
 ** allows local network devices access to the git server
-
-</$details>
 

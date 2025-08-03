@@ -20,6 +20,6 @@ Git-server implements an easy to install cross-platform local git HTTP server.
 - Local Development
 - Privacy
 - Personal branches
-- Managing a lot of repositorys
+- Managing a lot of repositories
 
 See @potofcoffee2go/git-server [github-page](https://potofcoffee2go.github.io/git-server/)  for installation and more details. 
