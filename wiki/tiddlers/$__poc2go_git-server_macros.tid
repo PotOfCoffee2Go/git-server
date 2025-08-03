@@ -1,12 +1,12 @@
-created: 20250723161703379
-modified: 20250803013601177
+created: 20250803013043024
+modified: 20250803013238804
 tags: $:/tags/Macro
-title: $:/poc2go/twgist/macros
+title: $:/poc2go/git-server/macros
 type: text/vnd.tiddlywiki
 
 \define welcometabs(tabtid, linktext)
 <$button class="tc-btn-invisible tc-tiddlylink">
-<$action-setfield $tiddler="$:/state/tab/welcome-tabs--1484882334" text="$tabtid$"/>
+<$action-setfield $tiddler="$:/state/tab/twgist-welcome-tabs--1484882334" text="$tabtid$"/>
 <$action-navigate $to="Welcome"/>
 $linktext$
 </$button>

@@ -1,0 +1,35 @@
+caption: Install
+created: 20250802212314654
+modified: 20250802223527530
+title: welcome-install
+type: text/vnd.tiddlywiki
+
+!!! Install
+
+Pretty standard install:
+
+* Clone git-server from GitHub
+* Change working directory to the git-server project
+* Install modules used by git-server
+
+```
+git clone https://github.com/PotOfCoffee2Go/git-server.git
+cd git-server
+npm install
+```
+
+* Start the server
+
+```
+npm start
+```
+
+The system will start two servers; the git server and a proxy server which routes to the git server. The repos will be placed in the `./repos` sub-directory. Initially there will be no repos until one is pushed to the server.
+
+* `http://localhost:7005` is the git server
+** always starts up with localhost access only
+* `http://<hostname>:7000` is the proxy server
+** allows local network devices access to the git server
+
+</$details>
+

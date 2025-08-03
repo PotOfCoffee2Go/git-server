@@ -16,7 +16,7 @@ const repoDir = './repos';
 // Proxy server front-ends the repo server - network access is thru the proxy
 const allowNetworkAccess = true; // false = do not start proxy server
 const proxyhost = '0.0.0.0';
-const proxyport = 8090; // note - is eighty-'ninety'
+const proxyport = 7000;
 
 // users.json - if exists else use demo users
 // Format of data in the JSON file is array of user/passwords as shown below
@@ -57,10 +57,8 @@ const authenticate = ({ type, repo, user, headers }, next) => {
 // Servers
 // Proxy server allows access by network devices
 if (allowNetworkAccess) {
-	const http = require('http')
 	const httpProxy = require('http-proxy');
-
-	httpProxy.createProxyServer({target:'http://localhost:7005'})
+	httpProxy.createProxyServer({ target:`http://localhost:${port}` })
 		.listen({host: proxyhost, port: proxyport});
 	console.log(hue(`Proxy server on http://${os.hostname()}:${proxyport} -> http://localhost:${port}`));
 }
@@ -74,7 +72,7 @@ repos.listen( port, { type: protocol }, (error) => {
 	if (error) {
 		return console.error(hue(`failed to start git-server because of error ${error}`));
 	}
-	console.log(hue(`node-git-server running at ${protocol}://localhost:${port}`));
+	console.log(hue(`git-server running at ${protocol}://localhost:${port}`));
 	console.log(hue(`Repositories in directory: ${repoPath}`));
 	repos.list((err, result) => {
 		if (!result) {
