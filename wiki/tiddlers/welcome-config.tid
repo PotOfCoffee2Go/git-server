@@ -1,0 +1,67 @@
+caption: Configuration
+created: 20250803222530005
+modified: 20250803230320867
+title: welcome-config
+type: text/vnd.tiddlywiki
+
+!!! Configuring git-server
+
+The configuration is in `./index.js`. People without JavaScript experience should have no issues as are just entering values true/false, names, numbers, etc. so very straight forward.
+
+Open 'index.js' with you favourite editor and it immediately begins with the configuration settings:
+
+```js
+// --------------------------------
+// Start of Configuration
+
+// Directory that contains the repos
+// if does not exist - will be created on first 'push'
+const repoDir = './repos';
+```
+
+* 'repoDir' is the directory name git-server will place the git repositories.
+* './' at the beginning creates the directory as a sub-directory of 'git-server'
+* A full pathname can be entered if desire the repositories to be elsewhere
+```js
+// Repo server - performs the git commands
+// Is only available to 'localhost'
+const repoPort = 7005;
+
+// Proxy server - network access is thru the proxy
+const proxyPort = 7000;
+```
+
+* Next are the HTTP port numbers that will be used for the servers
+* 'repoPort' is in the URL for the git-server repositories
+* 'proxyPort' is in the URL of the proxy allowing local network access
+
+```js
+// allowNetworkAccess equals true - the proxy server will be started
+const allowNetworkAccess = false; // false = do not start proxy server
+
+// allowAnonymousPush equals true - user/password checking will NOT BE PERFORMED!
+const allowAnonymousPush = true; // false - require user/password to 'push'
+```
+
+* 'allowNetworkAccess' determines if the proxy server will be started
+* 'allowAnonymousPush' determines if anonymous users can 'push' to the repos
+
+```js
+// User / passwords - only used when allowAnonymousPush = false;
+const users = [
+	{ "name": "jane", "password": "do3" },
+	{ "name": "roger", "password": "m00re" },
+	{ "name": "42", "password": "42" },
+];
+
+// End of configuration
+// --------------------------------
+```
+
+* Lastly, is the list of users and their passwords
+** No changes needed if allowing anonymous 'push' to repositories.
+* Just change the name and password as desired
+* To add a a user - copy existing line - change name and password
+
+
+The last few lines start up git-server. Just leave them alone.

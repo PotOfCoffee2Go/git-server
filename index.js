@@ -7,10 +7,10 @@ const repoDir = './repos';
 
 // Repo server - performs the git commands
 // Is only available to 'localhost'
-const port = 7005;
+const repoPort = 7005;
 
 // Proxy server - network access is thru the proxy
-const proxyport = 7000;
+const proxyPort = 7000;
 
 // allowNetworkAccess equals true - the proxy server will be started
 const allowNetworkAccess = false; // false = do not start proxy server
@@ -30,7 +30,7 @@ const users = [
 
 // --------------------------------
 // Fire up git-server
-const config = { repoDir, port, proxyport, allowNetworkAccess, allowAnonymousPush, users };
+const config = { repoDir, repoPort, proxyPort, allowNetworkAccess, allowAnonymousPush, users };
 const { repoServer } = require('./lib/reposerver');
 repoServer(config);
 // --------------------------------

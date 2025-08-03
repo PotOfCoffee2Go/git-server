@@ -1,7 +1,7 @@
 closer: poc2go-tab-closer
 created: 20250727020817447
-list: welcome-intro welcome-usecase welcome-install welcome-usage
-modified: 20250803171226759
+list: welcome-intro welcome-usecase welcome-install welcome-config welcome-usage
+modified: 20250803222450247
 title: Welcome
 type: text/vnd.tiddlywiki
 

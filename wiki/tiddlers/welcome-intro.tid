@@ -1,6 +1,6 @@
-caption: Intro
+caption: Introduction
 created: 20250802130208363
-modified: 20250803155904290
+modified: 20250803222618494
 title: welcome-intro
 type: text/vnd.tiddlywiki
 
@@ -17,17 +17,3 @@ Git-server implements an easy to install cross-platform local git HTTP server.
 ** Built-in proxy server allows local network access
 * Pushes can be anonymous or User/Password protected
 * Server is easily added as a remote to an existing git working directory
-
-!!!! Use Cases
-* Safety net
-** 
-* Local Development
-* Privacy
-* Personal branches
-** Local project directory uses two remote repositories.
-** The main repo is facing the web for public access (GitHub for example)
-** The develop repo resides on the local machine
-* Have a lot of repos
-* Portable
-
-

@@ -1,6 +1,6 @@
 caption: Use cases
 created: 20250803032049297
-modified: 20250803060826880
+modified: 20250803222413554
 title: welcome-usecase
 type: text/vnd.tiddlywiki
 
@@ -19,10 +19,6 @@ The develop repo is a safety net. If did some silly sequence of git commands tha
 It allows committing frequently without polluting the main repo. Gives full access to all version control activities, even those that are a no-no on the main repo. Consolidate commits (squash) prior to merging with the main repo. Stash away changes to perform a critial fix then resume where you left off - etc.
 
 All changes are committed to the develop repo. Commit changes frequently, a lot! - most of the time is only two commands `git commit -am "msg" && git push`. May need a `git add` occasionally if creating a new directory or file. The commit messages look like my shopping list - TP, PT, PP, Chx, HB. When ready to merge with the main repo, squash the commits and re-word to make sense - Toilet Paper, Paper Towels, Paper Plates, Boneless Chicken Breasts, Lean Hamburg. Once happy the commit history on the develop repo can merge to the main repo.
-
-Later on will go into these scenarios in detail.
-
-BTW - All of this stuff can be done on the main repo - been there, done that, tried, and died. Fixing a broken main repo usually spirals down a path that ends in the depths of hell. A develop repo can eliminate much crying in your beer.
 
 </$details>
 
