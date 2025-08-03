@@ -1,46 +1,25 @@
-### @PotOfCoffee2Go/git-server
+### Welcome to @PotOfCoffee2Go/git-server
 
 Git server for local network use.
 
-See @potofcoffee2go/git-server [github-page](https://potofcoffee2go.github.io/git-server/) for more details. 
+Git-server implements an easy to install cross-platform local git HTTP server.
 
-Install
-```
-git clone https://github.com/PotOfCoffee2Go/git-server.git
-cd git-server
-npm install
-npm start
-```
-**Meanwhile... in a separate terminal window**
+> from git's frame of reference - it is a 'remote' server, even though the server is running on localhost.
 
-Create a local project directory and add a package.json:
-```
-mkdir my-project
-cd my-project
-npm init -y
-```
-Then do git things:
-```
-git init
-git branch -M main
-git remote add git-server http://42:42@localhost:8090/my-project.git
-git add .
-git commit -am "Initial commit"
-git push -u git-server main
-git remote show git-server
-```
-the 'my-project.git' repo will be automatically created containing the package.json
+- Is zero config - if happy with the default settings
+- Single server can have unlimited number of repositories
+- Automatically creates repository on initial commit
+- Server only accessable from localhost
+- Built-in proxy server allows local network access
+- Pushes can be anonymous or User/Password protected
+- Server is easily added as a remote to existing git working directory
 
-From then on can commit changes:
-```
-git add .
-git commit -am "<message>"
-git push
-```
-Clone as usual:
-```
-git clone http://42:42@localhost:8090/my-project.git
-```
+#### Use Cases
 
-- the 42:42@ is user password
-- see `./index.js` for setting up user passwords and 'https'
+- Safety net
+- Local Development
+- Privacy
+- Personal branches
+- Managing a lot of repositorys
+
+See @potofcoffee2go/git-server [github-page](https://potofcoffee2go.github.io/git-server/)  for installation and more details. 
