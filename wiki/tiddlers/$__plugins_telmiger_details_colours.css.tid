@@ -1,6 +1,6 @@
 created: 20180925155320737
 creator: Thomas Elmiger
-modified: 20250802215911595
+modified: 20250804032142187
 modifier: Thomas Elmiger
 tags: $:/tags/Stylesheet
 title: $:/plugins/telmiger/details/colours.css
@@ -15,7 +15,7 @@ details {
 
 details summary {
    background-color: <<colour sidebar-tab-background>>;
-   color: <<colour sidebar-tab-foreground>>;
+   color: <<colour foreground>>;
 }
 
 details.notification summary {

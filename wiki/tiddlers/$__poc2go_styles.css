@@ -1,6 +1,23 @@
 .mono {
   font-family: monospace;
+  font-size: .9em;
 }
+.mono-q {
+  font-family: monospace;
+  font-size: .9em;
+  color: #EDC545;
+}
+.mono-y {
+  font-family: monospace;
+  font-size: .9em;
+  color: #CCD16B;
+}
+.mono-m {
+  font-family: monospace;
+  font-size: .9em;
+  color: #84C0F5;
+}
+
 .poc2go-console, pre > code {
   font-family: monospace;
   font-size: .9em;
@@ -9,7 +26,4 @@
 }
 .tc-tab-buttons {
   font-size: 103%;
-}
-summary {
-  font-size: 105%;
 }
