@@ -1,6 +1,6 @@
 caption: Introduction
 created: 20250802130208363
-modified: 20250803222618494
+modified: 20250805163736865
 title: welcome-intro
 type: text/vnd.tiddlywiki
 
@@ -8,12 +8,15 @@ type: text/vnd.tiddlywiki
 
 Git-server implements an easy to install cross-platform local git HTTP server.
 
-> from git's frame of reference - it is a 'remote' server, even though the server is running on localhost.
+From git's frame of reference - it is a 'remote' server, even though the server is running on localhost.
 
 * Is zero config - if happy with the default settings
 * Single server can have unlimited number of repositories
-* Automatically creates repository on initial commit
-* Server only accessable from localhost
-** Built-in proxy server allows local network access
+* Automatically creates repository on-the-fly upon initial push
+* Server only accessible from localhost
+** Built-in proxy server allows local network access (optional)
 * Pushes can be anonymous or User/Password protected
-* Server is easily added as a remote to an existing git working directory
+* Add repositories to existing git working directory
+** As a @@.mono-m 'git remote'@@ or @@.mono-m 'git submodule'@@
+
+Git is designed as a completely distributed system. Having repositories local gives maximum workflow flexibility and can use git to it's full potential. 
