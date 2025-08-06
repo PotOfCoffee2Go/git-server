@@ -1,53 +1,52 @@
 caption: Configuration
 created: 20250803222530005
-modified: 20250803230320867
+modified: 20250806101619150
 title: welcome-config
 type: text/vnd.tiddlywiki
 
 !!! Configuring git-server
 
-The configuration is in `./index.js`. People without JavaScript experience should have no issues as are just entering values true/false, names, numbers, etc. so very straight forward.
+The configuration is in `./repo.js`. People without JavaScript experience should have no issues as are just entering values that are numbers, true/false, user names and passwords so very straight forward.
 
-Open 'index.js' with you favourite editor and it immediately begins with the configuration settings:
+Open './repo.js' with you favourite editor to set values required for git-server. There are a few lines at the beginning and end - just leave them unchanged.
 
 ```js
 // --------------------------------
 // Start of Configuration
 
-// Directory that contains the repos
-// if does not exist - will be created on first 'push'
-const repoDir = './repos';
-```
-
-* 'repoDir' is the directory name git-server will place the git repositories.
-* './' at the beginning creates the directory as a sub-directory of 'git-server'
-* A full pathname can be entered if desire the repositories to be elsewhere
-```js
-// Repo server - performs the git commands
-// Is only available to 'localhost'
+// Repository server comm port
+// Performs the git commands 
+// Is only available on 'localhost'
 const repoPort = 7005;
 
-// Proxy server - network access is thru the proxy
+// Proxy server comm port
+// Routes git commands to port above
+// Devices on network have access via this port
 const proxyPort = 7000;
 ```
 
-* Next are the HTTP port numbers that will be used for the servers
-* 'repoPort' is in the URL for the git-server repositories
+* 'repoPort' is in the URL to access the git-server repositories
 * 'proxyPort' is in the URL of the proxy allowing local network access
 
 ```js
-// allowNetworkAccess equals true - the proxy server will be started
-const allowNetworkAccess = false; // false = do not start proxy server
+// Allow Network Access?
+//  true  - the proxy server above will be started
+//  false - the proxy server will not be started
+const allowNetworkAccess = false;
 
-// allowAnonymousPush equals true - user/password checking will NOT BE PERFORMED!
-const allowAnonymousPush = true; // false - require user/password to 'push'
+// Allow writes to repositories for all requests 
+//  true  - user/password in not required
+//  false - user/password is required
+const allowAnonymousPush = true;
 ```
 
 * 'allowNetworkAccess' determines if the proxy server will be started
-* 'allowAnonymousPush' determines if anonymous users can 'push' to the repos
+* 'allowAnonymousPush' determines if anonymous users can 'push' to the repositories
 
 ```js
-// User / passwords - only used when allowAnonymousPush = false;
+// User/passwords to allow write to repositories 
+// Required to 'git push' to repositories
+//  when allowAnonymousPush = false;
 const users = [
 	{ "name": "jane", "password": "do3" },
 	{ "name": "roger", "password": "m00re" },
@@ -58,10 +57,10 @@ const users = [
 // --------------------------------
 ```
 
-* Lastly, is the list of users and their passwords
+* List of users and their passwords
 ** No changes needed if allowing anonymous 'push' to repositories.
 * Just change the name and password as desired
 * To add a a user - copy existing line - change name and password
+* ensure @@.mono-m 'allowAnonymousPush = false;'@@
+** if 'true' the user/password will not be checked
 
-
-The last few lines start up git-server. Just leave them alone.
