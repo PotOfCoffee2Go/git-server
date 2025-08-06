@@ -1,36 +1,14 @@
-// --------------------------------
-// Start of Configuration
+const path = require('node:path');
 
-// Directory that contains the repos
-// if does not exist - will be created on first 'push'
-const repoDir = './repos';
+const hue = (txt, nbr=214) => `\x1b[38;5;${nbr}m${txt}\x1b[0m`;
 
-// Repo server - performs the git commands
-// Is only available to 'localhost'
-const repoPort = 7005;
-
-// Proxy server - network access is thru the proxy
-const proxyPort = 7000;
-
-// allowNetworkAccess equals true - the proxy server will be started
-const allowNetworkAccess = false; // false = do not start proxy server
-
-// allowAnonymousPush equals true - user/password checking will NOT BE PERFORMED!
-const allowAnonymousPush = true; // false - require user/password to 'push'
-
-// User / passwords - only used when allowAnonymousPush = false;
-const users = [
-	{ "name": "jane", "password": "do3" },
-	{ "name": "roger", "password": "m00re" },
-	{ "name": "42", "password": "42" },
-];
-
-// End of configuration
-// --------------------------------
-
-// --------------------------------
-// Fire up git-server
-const config = { repoDir, repoPort, proxyPort, allowNetworkAccess, allowAnonymousPush, users };
+const { configPath } = require('./lib/parameters').parameters();
+const config = require(configPath).config();
+config.repoDir = path.parse(configPath).name;
+ 
 const { repoServer } = require('./lib/reposerver');
+
+process.chdir(path.dirname(configPath));
+
+console.log(hue(`Configuration file: ${configPath}\n`));
 repoServer(config);
-// --------------------------------
