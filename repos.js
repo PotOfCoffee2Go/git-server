@@ -1,21 +1,33 @@
 exports.config = function config() {
+// Must be "v1" for current release of git-server
+const layout = "v1";
+
 // --------------------------------
 // Start of Configuration
 
-// Repo server - performs the git commands
-// Is only available to 'localhost'
+// Repository server comm port
+// Performs the git commands 
+// Is only available on 'localhost'
 const repoPort = 7005;
 
-// Proxy server - network access is thru the proxy
+// Proxy server comm port
+// Routes git commands to port above
+// Devices on network have access via this port
 const proxyPort = 7000;
 
-// allowNetworkAccess equals true - the proxy server will be started
-const allowNetworkAccess = false; // false = do not start proxy server
+// Allow Network Access?
+//  true  - the proxy server above will be started
+//  false - the proxy server will not be started
+const allowNetworkAccess = false;
 
-// allowAnonymousPush equals true - user/password checking will NOT BE PERFORMED!
-const allowAnonymousPush = true; // false - require user/password to 'push'
+// Allow writes to repositories for all requests 
+//  true  - user/password in not required
+//  false - user/password is required
+const allowAnonymousPush = true;
 
-// User / passwords - only used when allowAnonymousPush = false;
+// User/passwords to allow write to repositories 
+// Required to 'git push' to repositories
+//  when allowAnonymousPush = false;
 const users = [
 	{ "name": "jane", "password": "do3" },
 	{ "name": "roger", "password": "m00re" },
@@ -24,7 +36,5 @@ const users = [
 
 // End of configuration
 // --------------------------------
-
-return { repoPort, proxyPort, allowNetworkAccess, allowAnonymousPush, users };
-
-} // exports.config
+return { repoPort, proxyPort, allowNetworkAccess, allowAnonymousPush, users, layout };
+}
