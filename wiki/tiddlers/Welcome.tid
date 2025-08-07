@@ -1,7 +1,7 @@
 closer: poc2go-tab-closer
 created: 20250727020817447
-list: welcome-intro welcome-usecase welcome-install welcome-config welcome-usage
-modified: 20250803222450247
+list: welcome-intro welcome-usecase welcome-install welcome-config welcome-repositories welcome-usage
+modified: 20250808051415070
 title: Welcome
 type: text/vnd.tiddlywiki
 
@@ -17,7 +17,7 @@ type: text/vnd.tiddlywiki
 <a href="https://github.com/PotOfCoffee2Go/git-server" target="_blank" style="text-decoration:none;">
 {{$:/core/images/github|24px}} git-server
 </a>
-<div style="opacity:.6;index:100;margin-top:-4em;">
+<div style="opacity:.6;index:100;margin-top:-3.5em;">
 Draft
 </div>
 </div>

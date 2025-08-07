@@ -1,6 +1,6 @@
 caption: Use cases
 created: 20250803032049297
-modified: 20250805160046444
+modified: 20250808053747615
 title: welcome-usecase
 type: text/vnd.tiddlywiki
 
@@ -37,8 +37,6 @@ To use:
 
 Git is designed as a completely distrbuted system. Will use GitHub as an example - but is the same for any public git service - GitLab, Bitbucket, etc.
 
-Briefly,
-
 Instead of cloning a working directory directly from GitHub can build a local copy of the GitHub repository and clone a working directory from the local copy.
 
 In a sense, is similar to a 'fork' but with the fork residing on the local machine instead of GitHub. Development is completely local (no internet access is used during development- pushes are to the local repository).
@@ -61,6 +59,7 @@ Later will discuss how to setup working directories which can be searched by dir
 
 <$details summary="Portable">
 
+to-do
 
 </$details>
 
@@ -72,7 +71,7 @@ Git-server can be assigned as a remote on any existing local git directory. This
 
 A similar setup is used by GitHub gh-pages when using a branch as the source of the pages.
 
-Will discuss in detail later.
+to-do: Will discuss in detail later.
 
 </$details>
 
