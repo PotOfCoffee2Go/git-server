@@ -23,11 +23,11 @@ const allowNetworkAccess = false;
 // Allow writes to repositories for all requests 
 //  true  - user/password in not required
 //  false - user/password is required
-const allowAnonymousPush = true;
+const allowAnonymous = true;
 
 // User/passwords to allow write to repositories 
 // Required to 'git push' to repositories
-//  when allowAnonymousPush = false;
+//  when allowAnonymous = false;
 const users = [
 	{ "name": "jane", "password": "do3" },
 	{ "name": "roger", "password": "m00re" },
@@ -36,5 +36,5 @@ const users = [
 
 // End of configuration
 // --------------------------------
-return { repoPort, proxyPort, allowNetworkAccess, allowAnonymousPush, users, layout };
+return { repoPort, proxyPort, allowNetworkAccess, allowAnonymous, users, layout };
 }

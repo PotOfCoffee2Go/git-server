@@ -37,16 +37,16 @@ const allowNetworkAccess = false;
 // Allow writes to repositories for all requests 
 //  true  - user/password in not required
 //  false - user/password is required
-const allowAnonymousPush = true;
+const allowAnonymous = true;
 ```
 
 * 'allowNetworkAccess' determines if the proxy server will be started
-* 'allowAnonymousPush' determines if anonymous users can 'push' to the repositories
+* 'allowAnonymous' determines if anonymous users can 'push' to the repositories
 
 ```js
 // User/passwords to allow write to repositories 
 // Required to 'git push' to repositories
-//  when allowAnonymousPush = false;
+//  when allowAnonymous = false;
 const users = [
 	{ "name": "jane", "password": "do3" },
 	{ "name": "roger", "password": "m00re" },
@@ -61,6 +61,6 @@ const users = [
 ** No changes needed if allowing anonymous 'push' to repositories.
 * Just change the name and password as desired
 * To add a a user - copy existing line - change name and password
-* ensure @@.mono-m 'allowAnonymousPush = false;'@@
+* ensure @@.mono-m 'allowAnonymous = false;'@@
 ** if 'true' the user/password will not be checked
 
