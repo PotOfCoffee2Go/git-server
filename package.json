@@ -1,11 +1,19 @@
 {
   "name": "@PotOfCoffee2Go/git-server",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "https://github.com/PotOfCoffee2Go/git-server#readme",
+  "bugs": {
+    "url": "https://github.com/PotOfCoffee2Go/git-server/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PotOfCoffee2Go/git-server.git"
   },
   "keywords": [],
   "author": "PotOfCoffee2Go",
