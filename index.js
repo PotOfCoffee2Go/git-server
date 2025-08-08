@@ -1,3 +1,10 @@
+/*\
+ * Git-server entry point
+ * 
+ * repo: https://github.com/PotOfCoffee2Go/git-server.git
+ * author: PotOfCoffee2Go
+ * license: MIT
+\*/
 const path = require('node:path');
 const pkg = require('./package.json');
 const hue = (txt, nbr=214) => `\x1b[38;5;${nbr}m${txt}\x1b[0m`;

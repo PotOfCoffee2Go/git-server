@@ -1,3 +1,6 @@
+/*\
+ * A git-server configuration file
+\*/
 exports.config = function config() {
 // Must be "v1" for current release of git-server
 const layout = "v1";
