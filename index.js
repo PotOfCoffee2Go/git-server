@@ -2,11 +2,12 @@ const path = require('node:path');
 const pkg = require('./package.json');
 const hue = (txt, nbr=214) => `\x1b[38;5;${nbr}m${txt}\x1b[0m`;
 
-const { repoServer } = require('./lib/reposerver');
 const { configPath } = require('./lib/parameters').parameters();
+const { repoServer } = require('./lib/reposerver');
 
 const config = require(configPath).config();
-config.repoDir = path.parse(configPath).name;
+config.pkgDir = process.cwd();
+config.reposBase = path.parse(configPath).name;
 config.server = {};
 
 if (config.layout !== 'v1') {
