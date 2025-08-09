@@ -7,8 +7,11 @@ const packageDir = (fpath) => path.resolve(os.homedir(), '.git-server', fpath);
 
 const { repoServer } = require('../lib/reposerver');
 
-const { createWorkDirectory } = require('./create-work-directory');
-const { pushToRepo } = require('./push-to-repo');
+const { createWork } = require('./create-work');
+const { workCommit } = require('./work-commit');
+//const { createWork2MainPull } = require('./create-work2-main-pull');
+const { createPackageJson } = require('./create-package-json');
+const { workPush } = require('./work-push');
 
 // Remove previous test runs and initialise for new tests
 fs.removeSync(packageDir('tests'));
@@ -32,22 +35,27 @@ if (config.layout !== 'v1') {
 
 function stopGitServer() {
 		config.server.repos.close();
-		console.log(hue(`----- Stopped git-server running on port ${config.repoPort} -----`));
+		console.log(hue(`----- Shutdown git-server http://localhost:${config.repoPort} -----`));
 		return Promise.resolve(true);
 }
 
+function basicPush() {
+	console.log(hue(`----- Start git-server on port ${config.repoPort} -----`));
+	return repoServer(config, true)// like a restart - no REPL
+		.then(() => createWork(test, config))
+		.then(() => createPackageJson(test, config))
+		.then(() => workCommit(test, config, "chore: add package.json"))
+		.then(() => workPush(test, config))
+		.then(() => stopGitServer())
+}
+
 var test = {
-	testName: 'Create working directory and commit a package.json',
-	workDir: packageDir('tests/working'),
+//	testName: '', // overrides defalut test name
 	repoUrl: 'http://localhost:8005/test1.git',
+	workDir: packageDir('tests/working'),
+	remote: 'origin',
+	branch: 'main',
 }
 
 process.chdir(path.dirname(configPath));
-console.log(hue(`----- Start git-server on port ${config.repoPort} -----`));
-repoServer(config, true)// like a restart - no REPL
-	.then(() => createWorkDirectory(test, config))
-	.then(() => {
-		test.testName = 'Initial push to repository'
-		return pushToRepo(test, config);
-	})
-	.then(() => stopGitServer())
+basicPush();

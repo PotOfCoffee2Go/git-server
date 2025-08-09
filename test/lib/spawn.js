@@ -13,7 +13,7 @@ exports.command = function command(options) {
 	const { cmd, params, workDir } = options;
 	return new Promise((resolve, reject) => {
 		spawnOptions.cwd = workDir;
-		console.log(hue(`${cmd} ` + params.join(' ')));
+		console.log(hue(`\n${cmd} ${params.join(' ')}`));
 		// trim laading/trailing quotes from commit msg unless Windows
 		if (!isWin32 && params[0] === 'commit') { 
 			  params[2] = params[2].slice(1, -1);
