@@ -1,0 +1,53 @@
+caption: Create
+created: 20250807185425656
+modified: 20250812162349002
+title: repositories-create
+type: text/vnd.tiddlywiki
+
+!!! Create
+
+Repositories are created on-the-fly during the first push.
+
+!!!! Initialise a git working directory
+
+```
+mkdir my-repos && cd my-repos
+git init -b main
+git branch -M main
+git remote add origin http://localhost:7005/my-repos.git
+```
+
+* Create a directory and go to it
+* Have git initialise the working directory
+** @@.mono '-b'@@ including a 'main' branch
+* Set the 'main' branch as the default branch
+* Assign the git-server URL as the @@.mono 'origin'@@
+** include the name of the repository
+** customary to use `.git` as the extension
+
+!!!! Add a file to commit and do the initial push
+
+```
+npm init -y
+git add .
+git commit -m "Initial commit"
+git push -u origin main
+```
+* Git needs at least one file - to have something to commit
+* Create a default `package.json` (as an example)
+* Add the file to the next commit
+* Commit the file
+* Push the 'main' branch to 'origin' (ie: http://localhost:7005/my-repos.git)
+** @@.mono '-u'@@ sets up 'origin' to track the 'main' branch
+
+Will display git gibberish and shows the repository has been added
+
+To get info about the repository:
+
+```
+git remote show origin
+```
+
+Will see 'main' is being tracked by the repository
+
+Thus when branch 'main' is the current branch; a @@.mono-m 'git pull'@@ or @@.mono-m 'git push'@@ will go to that repository.

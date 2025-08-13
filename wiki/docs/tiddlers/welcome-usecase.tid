@@ -1,0 +1,86 @@
+caption: Use cases
+created: 20250803032049297
+modified: 20250808053747615
+title: welcome-usecase
+type: text/vnd.tiddlywiki
+
+!!! Use cases
+
+Here are a few use cases for using git-server:
+
+<$details summary="Privacy">
+
+Publishing sensitive information in a repository on a public online service (even if repository set to private) - not such a great idea. Sensitive files can be push to a local repository. Only bring up git-server for those repositories when accessing them.
+
+Is a lot more secure to keep secrets on your local machine - but for those that want real security can setup encryption using a tool like GPG.
+
+For example:
+
+* Encrypt the git-server 'repos' directory
+** Use third-party or OS encryption/decryption tools
+
+To use:
+
+* Decrypt git-server 'repos' directory
+* Bring up git-server
+* Clone a repository into a working directory
+* Git update..., push
+* Shutdown git-server
+* Destructive delete the working directory
+* Encrypt repo directory
+
+> I have a separate OS user account and use GPG keys to access my user/password secrets. To my knowledge has never been compromised. Setting that up is beyond the scope of this doc.
+
+</$details>
+
+<$details summary="Local copy of public repositories">
+
+Git is designed as a completely distrbuted system. Will use GitHub as an example - but is the same for any public git service - GitLab, Bitbucket, etc.
+
+Instead of cloning a working directory directly from GitHub can build a local copy of the GitHub repository and clone a working directory from the local copy.
+
+In a sense, is similar to a 'fork' but with the fork residing on the local machine instead of GitHub. Development is completely local (no internet access is used during development- pushes are to the local repository).
+
+When ready to update changes back to GitHub, add the GitHub repository as a @@.mono-m 'remote'@@. Then pull, merge, commit, and push to/from the remote. Can remove the GitHub @@.mono-m 'remote'@@ (or just leave it assigned so can pull from it frequently).
+
+Because the repository is a local copy can beat on it, rebase it, etc. Probably should make a copy of the repository in the git-server @@.mono-m 'repos'@@ directory before going too crazy! Just a teenie-weenie little 'on-the-fly' command mistake - git history diverged - grrr...
+
+The point is - is all local.
+
+</$details>
+
+<$details summary="Have a lot of repos">
+
+Managing a lot of repos on a public service can be exasperating. Are limited to using whatever search tools they have available; which usually searches commit messages and not file content.
+
+Later will discuss how to setup working directories which can be searched by directory, file, and content of files to locate the repo that contains the content to be located.
+
+</$details>
+
+<$details summary="Portable">
+
+to-do
+
+</$details>
+
+<$details summary="Personal branches">
+
+A branch on any existing local working directory can be assigned repo 
+
+Git-server can be assigned as a remote on any existing local git directory. This allows one to keep personal records about the project; references, links, contacts, calendar, emails, etc. Create a branch, add git-server as a remote, and create a sub-directory in the local working directory. You would be the only person that would see that sub-directory.
+
+A similar setup is used by GitHub gh-pages when using a branch as the source of the pages.
+
+to-do: Will discuss in detail later.
+
+</$details>
+
+<$details summary="Safety net">
+
+This use case is to have the local project directory use two remote repositories. The main repo is facing the web for public access (GitHub for example); while the develop repo will be on the development machine 'localhost' or hosted on a machine accessed over the local network.
+
+The develop repo is a safety net. If did some silly sequence of git commands that makes the repo state questionable - can store off the local directory somewhere - blow away the repo and create/resync with the main repo. Copy in the files that were stored away as a new commit and merge to main.
+
+It allows committing frequently without polluting the main repo. Gives full access to all version control activities, even those that are a no-no on the main repo. Consolidate commits (squash) prior to merging with the main repo. Stash away changes to perform a critial fix then resume where you left off - etc.
+
+</$details>

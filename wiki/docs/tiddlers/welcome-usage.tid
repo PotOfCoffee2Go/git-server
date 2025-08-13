@@ -1,0 +1,187 @@
+caption: Usage
+created: 20250802214624559
+modified: 20250804080824747
+title: welcome-usage
+type: text/vnd.tiddlywiki
+
+!!! Usage
+
+As some may not be familiar with having two remote repository servers assigned to the local working directory will go through the steps of setting that scenario up (or at least one way of doing it). Will be showing commands and 'what' they do - not 'how' they do it. See the [[git scm|https://git-scm.com]] web site for definitive documentation on using Git and how it works.
+
+<$details summary="Single local directory with multiple remote git repositories?">
+
+Will have a @@.mono 'local directory'@@ which has been initialised with @@.mono-m 'git init -b main'@@. After a few more git commands there will be two remote repositories @@.mono-q 'origin'@@ and @@.mono-y 'git-server'@@. Two branches will have been created in the @@.mono 'local directory'@@; @@.mono-q 'main'@@ which will be assigned to the @@.mono-q 'origin'@@ remote repository, and @@.mono-y 'develop'@@ which will be assigned to the @@.mono-y 'git-server'@@ remote repository.  
+
+> Although @@.mono-y 'git-server'@@ is probably running on the same development computer as the @@.mono 'local directory'@@; from git's perspective it is a remote repository being accessed via a URL.
+
+The contents (files and sub-directories) of the @@.mono 'local directory'@@ change depending on which branch is active. If using @@.mono-m 'git checkout main'@@ and then switch to @@.mono-m 'git checkout develop'@@ the contents of @@.mono 'local directory'@@ will more than likely differ. @@.mono-m 'git checkout &lt;branch&gt;'@@ changes the contents of the @@.mono 'local directory'@@ automatically.
+
+The vast majority of work will be done on the @@.mono-y 'develop'@@ branch. This is where  files are created, read, updated, and deleted. Commits are frequently created here and  @@.mono-m 'git push'@@ to the @@.mono-y 'git-server'@@ remote repository. Commit and push frequently - less is not more - more is more!
+
+@@.mono-y 'develop'@@ branch commit messages can be terse that mean something to you but possibly not to others. Like a grocery shopping list - four commits:
+
+```
+git commit -am "PT"
+git commit -am "PP"
+git commit -am "Chx"
+git commit -am "HB"
+```
+
+Will be reorganising the commits before updating the @@.mono-q 'main'@@ branch into a single commit with a more descriptive message:
+
+```
+git commit -m "chore: shop for BBQ 
+
+- Paper Towels
+- Paper Plates
+- Boneless Chicken Breasts
+- Lean Hamburg
+"
+```
+
+</$details>
+
+<$details summary="Git setup">
+
+Git can be configured to do some tasks automatically - but for now will assume none of that is setup.
+
+Will be unable to @@.mono-q 'git commit -m "message"'@@ changes unless a user name and email are configured. Commit will not work without them.
+
+```
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+```
+
+The workflow being described will be using a commit log @@.mono-m 'git log --oneline --graph --decorate'@@ which displays information in a condensed format. Long git commands can be shortened by assigning [[git alias|https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases]].
+
+```
+git config --global alias.lo 'log --oneline --graph --decorate'
+```
+
+The alias would make these two commands equivalent.
+
+```
+git lo
+git log --oneline --graph --decorate
+```
+
+Up to you if wish to setup some aliases. Will be using the regular commands in the examples.
+
+</$details>
+
+<$details summary="Create a project directory">
+
+Make a directory to hold all the files and sub-directories that will be in the project. Will need at least one file in the directory to kick-start the @@.mono "initial commit"@@ needed to create a @@.mono-y 'git-server'@@ repository.
+
+> git ignores any directories that are empty.
+
+```
+mkdir my-project
+cd my-project
+npm init -y
+```
+
+The directory will now contain a @@.mono-q 'package.json'@@ file with default values. Is common for a git version controlled project to have a @@.mono-q package.json@@ file even if never used. It has information handy for new comers to the project. Later will update it and add a @@.mono-q README.md@@ and @@.mono-q LICENSE@@ file.
+
+</$details>
+
+<$details summary="Setup project directory with Git Version Control">
+
+While still in the @@.mono 'my-project'@@ directory set it up to be under version control.
+
+* Have git initialise @@.mono 'my-project'@@ directory
+** @@.mono '-b'@@ option creates the default branch to be @@.mono-q 'main'@@
+** Makes @@.mono 'my-project'@@ a git @@.mono 'local directory'@@ under version control
+
+```
+git init -b main
+```
+
+Create the @@.mono-y 'develop'@@ branch since that is where we will normally reside.
+
+* Checkout (switch to) branch @@.mono-y 'develop'@@
+** @@.mono '-b'@@ is needed to create a new branch
+
+```
+git checkout -b develop
+```
+
+Will go back to the @@.mono-q 'main'@@ branch later but for now will finish setting up @@.mon-y 'develop'@@
+
+</$details>
+
+<$details summary="First commit">
+
+Now will add @@.mono-q package.json@@ to be automatically included in commits whenever it is changed.
+
+```
+git add package.json
+git commit -m "chore: initial commit
+
+- add package.json
+"
+```
+
+</$details>
+
+<$details summary="Add git-server as a remote repository">
+
+git-server is somewhat unique in that it will automatically create a repository on the first push if the repository does not already exist.
+
+
+Tell git the URL of our remote @@.mono-y git-server@@ server. The URL ends with the name of the repository which by convention is the project name with a @@.mono '.git'@@ extension.
+
+```
+git remote add git-server http://localhost:7005/my-project.git
+```
+
+Note that the remote server is being named 'git-server'. It can be any name you wish though 'git-server' makes sense since the URL references the git-server. Git generally does not use URLs in most commands - uses the remote name instead to lookup the URL.
+
+
+</$details>
+
+<$details summary="First 'Push' to git-server">
+
+A `git status` command can be entered at any time to display current git state.
+
+* Add all files in the current directory to be tracked by git
+** In this case there is a single file - `package.json`
+* Commit the new file
+** The -m (message) is a required parameter
+* Push the commit to the git-server
+** The -u parameter tells sets the default server for branch 'main' to 'git-server'
+** From now on `git push` when using branch 'main' will push it to the git-server
+** Same for `git pull` - do not need to specify `git-server main`
+* Have git display current branches assigned to git-server
+ 
+```
+git remote add git-server http://42:42@localhost:7000/my-project.git
+git push -u git-server deveop 
+git remote show git-server
+```
+
+</$details>
+
+---
+
+> I associate the remote server name @@.mono-q 'origin'@@ with the public repository on GitHub, BitBucket, GitLab, etc. @@.mono-q 'origin'@@ is the default remote server name when @@.mono-m 'git clone ...'@@ from the web.
+
+---
+
+<$details summary="Push to git-server">
+
+```
+git add .
+git commit -am "<message>"
+git push
+```
+
+</$details>
+
+<$details summary="Clone on another device">
+
+```
+git clone http://42:42@localhost:8090/my-project.git
+```
+
+</$details>

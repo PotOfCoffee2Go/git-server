@@ -1,0 +1,36 @@
+closer: poc2go-tab-closer
+created: 20250727020817447
+list: welcome-intro welcome-usecase welcome-install welcome-config welcome-repositories welcome-usage
+modified: 20250808051415070
+title: Welcome
+type: text/vnd.tiddlywiki
+
+<div style="float:left;padding:4px;">
+<a href="https://git-scm.com/" target="_blank"><$image source="git-logo.png" width="60px"/></a> 
+</div>
+
+<div style="float:right;padding:4px;">
+<a href="https://nodejs.org/en/" target="_blank"><$image source="node-js-logo.png" width="90px"/></a> 
+</div>
+
+<div style="text-align:center;font-size:2em;">
+<a href="https://github.com/PotOfCoffee2Go/git-server" target="_blank" style="text-decoration:none;">
+{{$:/core/images/github|24px}} git-server
+</a>
+<div style="opacity:.6;index:100;margin-top:-3.5em;">
+Draft
+</div>
+</div>
+
+<div class="mono" style="clear:both;text-align:center;margin: 0 0 -2em -2em;">
+
+Node.js Git Server
+
+</div>
+
+<<tabs "[list[Welcome!!closer]]" "" "$:/state/tab/welcome-tabs">>
+
+<<tabs "[list[Welcome!!list]]" "welcome-intro" "$:/state/tab/welcome-tabs">>
+
+@@color:aqua;border:1px solid aqua;border-radius:6px;font-size:.9em; &nbsp;  [[Top|Welcome]] &nbsp; @@
+

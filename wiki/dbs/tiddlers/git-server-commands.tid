@@ -1,0 +1,29 @@
+caption: Command sets
+created: 20250813103309456
+modified: 20250813114415684
+title: git-server-commands
+type: text/vnd.tiddlywiki
+
+Create working directory
+
+```
+git init -b ${settings.branch}
+git remote add remote ${settings.repoUrl}
+git remote show ${settings.remote}
+git status
+```
+
+Checkout new branch
+
+```
+git status
+git checkout -b ${settings.branch}
+git status
+```
+Checkout existing branch
+
+```
+git status
+git checkout ${settings.branch}
+git status
+```

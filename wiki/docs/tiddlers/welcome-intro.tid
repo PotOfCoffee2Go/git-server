@@ -1,0 +1,25 @@
+caption: Introduction
+created: 20250802130208363
+modified: 20250807174347217
+title: welcome-intro
+type: text/vnd.tiddlywiki
+
+!!! Welcome to @PotOfCoffee2Go/git-server
+
+[[Git|https://git-scm.com/book]] server for local network use.
+
+Git-server implements an easy to install cross-platform local Git HTTP repository server.
+
+* Is zero config - if happy with the default settings
+* Run multiple servers on localhost
+* Server can have unlimited number of repositories
+* Automatically creates repository on initial push
+* Built-in proxy server allows local network access
+* Pushes can be anonymous or User/Password protected
+* Server is easily added as a remote to existing git working directory
+** As a @@.mono-m [[git remote|https://git-scm.com/docs/git-remote]]@@ or @@.mono-m [[git submodule|https://git-scm.com/book/en/v2/Git-Tools-Submodules]]@@
+
+Git is designed as a completely distributed system. Having repositories local gives maximum workflow flexibility and can use git to it's full potential.
+
+> From git's frame of reference - git-server is a 'remote' server, even though the server is running on localhost.
+

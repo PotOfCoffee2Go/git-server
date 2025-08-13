@@ -1,0 +1,14 @@
+# npm installed modules
+/node_modules
+
+# Repositories
+/repos
+
+# User/password file
+users.json
+
+# TiddlyWiki Story list
+\$__StoryList*
+
+# Tiddlers created by server - is temporary  during dev
+Server Tiddler *

@@ -1,0 +1,32 @@
+h3, h4 {
+  color: #84C0F5;
+}
+.mono {
+  font-family: monospace;
+  font-size: .9em;
+}
+.mono-q {
+  font-family: monospace;
+  font-size: .9em;
+  color: #EDC545;
+}
+.mono-y {
+  font-family: monospace;
+  font-size: .9em;
+  color: #CCD16B;
+}
+.mono-m {
+  font-family: monospace;
+  font-size: .9em;
+  color: #84C0F5;
+}
+
+.poc2go-console, pre > code {
+  font-family: monospace;
+  font-size: .9em;
+  background: black;
+  overflow-x: auto;
+}
+.tc-tab-buttons {
+  font-size: 0.95em;
+}

@@ -1,0 +1,5 @@
+title: git-server-command-options
+
+<$select tiddler='git-server' field='command' tooltip='Choose a new site title'>
+<option>Create working directory</option>/n<option>Checkout new branch</option>/n<option>Checkout existing branch</option></$select>
+

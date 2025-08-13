@@ -1,0 +1,63 @@
+caption: Introduction
+created: 20250807175512876
+modified: 20250807215601116
+title: config-intro
+type: text/vnd.tiddlywiki
+
+!!! Configuration Introduction
+
+Open './repo.js' with you favourite editor to set values desired for git-server. There are a few lines at the beginning and end - just leave them unchanged.
+
+```js
+// --------------------------------
+// Start of Configuration
+
+// Repository server comm port
+// Performs the git commands 
+// Is only available on 'localhost'
+const repoPort = 7005;
+
+// Proxy server comm port
+// Routes git commands to port above
+// Devices on network have access via this port
+const proxyPort = 7000;
+```
+
+* 'repoPort' is in the URL to access the git-server repositories
+* 'proxyPort' is in the URL of the proxy allowing local network access
+
+```js
+// Allow Network Access?
+//  true  - the proxy server above will be started
+//  false - the proxy server will not be started
+const allowNetworkAccess = false;
+
+// Allow writes to repositories for all requests 
+//  true  - user/password in not required
+//  false - user/password is required
+const allowAnonymous = true;
+```
+
+* 'allowNetworkAccess' determines if the proxy server will be started
+* 'allowAnonymous' determines if anonymous users can 'push' to the repositories
+
+```js
+// User/passwords to allow write to repositories 
+// Required to 'git push' to repositories
+//  when allowAnonymous = false;
+const users = [
+	{ "name": "jane", "password": "do3" },
+	{ "name": "roger", "password": "m00re" },
+	{ "name": "42", "password": "42" },
+];
+
+// End of configuration
+// --------------------------------
+```
+
+* List of users and their passwords
+** No changes needed if allowing anonymous 'push' to repositories.
+* Just change the name and password as desired
+* To add a a user - copy existing line - change name and password
+* ensure @@.mono-m 'allowAnonymous = false;'@@
+** if 'true' the user/password will not be checked

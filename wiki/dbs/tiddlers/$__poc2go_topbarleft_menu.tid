@@ -1,0 +1,26 @@
+created: 20250722201652686
+modified: 20250807222544206
+tags: $:/tags/TopLeftBar
+title: $:/poc2go/topbarleft/menu
+type: text/vnd.tiddlywiki
+
+\define actions()
+<$action-setfield $tiddler="$:/state/sidebar" text="no"/>
+\end
+
+\whitespace trim
+<div style="font-size: 1.19em;margin-top:-1.0em;margin-left:-0.3em;">
+
+<$button message="tm-home" tooltip={{$:/language/Buttons/Home/Hint}} aria-label={{$:/language/Buttons/Home/Caption}} class=<<tv-config-toolbar-class>>
+actions=<<actions>>>
+<%if [<tv-config-toolbar-icons>match[yes]] %>
+{{$:/core/images/home-button}}
+<%endif%>
+<%if [<tv-config-toolbar-text>match[yes]] %>
+<span class="tc-btn-text">
+<$text text={{$:/language/Buttons/Home/Caption}}/>
+</span>
+<%endif%>
+</$button>
+
+</div>

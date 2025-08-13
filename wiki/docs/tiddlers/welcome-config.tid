@@ -1,0 +1,13 @@
+caption: Configuration
+created: 20250803222530005
+list: config-intro config-changedir
+modified: 20250807203641628
+title: welcome-config
+type: text/vnd.tiddlywiki
+
+!!! Configuring git-server
+
+The default configuration (also is an example) resides in the git-server project directory `repo.js` file. No JavaScript experience required as are just entering values that are numbers, true/false, user names and passwords; so very straight forward.
+
+<<tabs "[list[welcome-config!!list]]" "config-intro" "$:/state/tab/config-tabs">>
+

@@ -1,0 +1,9 @@
+caption: Repositaries
+created: 20250807194305935
+list: repositories-create repositories-clone repositories-remote
+modified: 20250808153257178
+title: welcome-repositories
+type: text/vnd.tiddlywiki
+
+
+<<tabs "[list[welcome-repositories!!list]]" "repositories-create" "$:/state/tab/repositories-tabs">>

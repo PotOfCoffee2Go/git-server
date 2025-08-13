@@ -1,0 +1,28 @@
+{
+  "name": "@PotOfCoffee2Go/git-server",
+  "version": "1.6.5",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "https://github.com/PotOfCoffee2Go/git-server#readme",
+  "bugs": {
+    "url": "https://github.com/PotOfCoffee2Go/git-server/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PotOfCoffee2Go/git-server.git"
+  },
+  "keywords": [],
+  "author": "PotOfCoffee2Go",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "fs-extra": "^11.3.1",
+    "http-proxy": "github:PotOfCoffee2Go/node-http-proxy",
+    "node-git-server": "^1.0.0",
+    "tiddlywiki": "^5.3.8"
+  }
+}

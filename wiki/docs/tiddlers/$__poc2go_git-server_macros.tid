@@ -1,0 +1,31 @@
+created: 20250803013043024
+modified: 20250808072757710
+tags: $:/tags/Macro
+title: $:/poc2go/git-server/macros
+type: text/vnd.tiddlywiki
+
+\define welcometabs(tabtid, linktext)
+<$button class="tc-btn-invisible tc-tiddlylink">
+<$action-setfield $tiddler="$:/state/tab/welcome-tabs--1484882334" text="$tabtid$"/>
+<$action-navigate $to="Welcome"/>
+$linktext$
+</$button>
+\end
+
+\define repositorytabs(tabtid, linktext, scr="yes")
+<$button class="tc-btn-invisible tc-tiddlylink">
+<$action-setfield $tiddler="$:/state/tab/repositories-tabs--1796578411" text="$tabtid$"/>
+<$action-setfield $tiddler="$:/state/tab/welcome-tabs--1484882334" text="welcome-repositories"/>
+<$action-navigate $to="Welcome" $scroll="$scr$"/>
+$linktext$
+</$button>
+\end
+
+\define configtabs(tabtid, linktext, scr="yes")
+<$button class="tc-btn-invisible tc-tiddlylink">
+<$action-setfield $tiddler="$:/state/tab/config-tabs-1468204655" text="$tabtid$"/>
+<$action-setfield $tiddler="$:/state/tab/welcome-tabs--1484882334" text="welcome-config"/>
+<$action-navigate $to="Welcome" $scroll="$scr$"/>
+$linktext$
+</$button>
+\end

@@ -1,0 +1,36 @@
+caption: Change directory
+created: 20250807203604174
+modified: 20250808073746066
+title: config-changedir
+type: text/vnd.tiddlywiki
+
+!!! Changing directory of configuration and repositories
+Git-server has a single 'configuration file' parameter that can be passed when the server is started. 
+
+```
+npm start /path/to/config-file.js
+```
+The @@.mono '.js'@@ extension is optional - but will be automatically added if not present.
+
+The repositories will be in a sub-directory of the directory that the config file resides. The sub-directory has the same name as the configuration file (without the @@.mono '.js'@@).
+
+For example: If the config file (see `./repos.js` for example) is copied to a directory @@.mono '~/repositories'@@, then starting git-server with:
+
+```
+npm start ~/repositories/repos.js
+```
+
+the repositories will reside in directory @@.mono '~/repositories/repos'@@. 
+
+> Note that the sub-directory of repositories is named the same as he configuration file. Multiple @@.mono 'config.js'@@ files can exist in the same directory with it's associated @@.mono 'config'@@ directory of repositories.
+
+If were to copy and rename `repos.js` to @@.mono '~/repositories/my-stuff.js'@@ then:
+
+```
+npm start ~/repositories/my-stuff.js
+
+```
+
+the repositories would reside in directory @@.mono '~/repositories/my-stuff'@@.
+
+
