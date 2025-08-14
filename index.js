@@ -6,15 +6,17 @@
  * license: MIT
 \*/
 const path = require('node:path');
+const pkg = require('./package.json');
 
+const REPL = require('./lib/replprompt');
 const { twdbs } = require('./lib/twdbs');
-
-
-const { configPath } = require('./lib/parameters').parameters();
-const { loadConfig } = require('./lib/loadconfig');
 const { repoServer } = require('./lib/reposerver');
 
-const config = loadConfig(configPath);
+console.log(`\ngit-server v${pkg.version}`);
+
+const { configPath } = require('./lib/parameters').parameters();
 process.chdir(path.dirname(configPath));
-twdbs(config)
-	.then(() => repoServer(config));
+
+twdbs(REPL.init())
+	.then(($rt) => repoServer($rt))
+	.then(() => { REPL.start(); })

@@ -1,5 +1,8 @@
+created: 20250815185645271
+modified: 20250815191214138
 title: git-server-command-options
 
-<$select tiddler='git-server' field='command' tooltip='Choose a new site title'>
-<option>Create working directory</option>/n<option>Checkout new branch</option>/n<option>Checkout existing branch</option></$select>
+@@.mono-q command: @@
+<$select tiddler='git-server-settings' field='command' tooltip='Choose a new site title'>
+<option>Show status</option>/n<option>Show branches</option>/n<option>Clone to /home/pi5/junk/dillinger2</option>/n<option>Create working directory</option>/n<option>Create branch</option>/n<option>Checkout branch main</option>/n<option>Delete branch (soft)</option>/n<option>Delete branch (hard)</option></$select>
 

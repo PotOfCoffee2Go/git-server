@@ -1,0 +1,9 @@
+created: 20250814130715357
+modified: 20250816005845360
+title: git-server-request
+type: text/vnd.tiddlywiki
+
+@@.mono-q command: @@
+<$select tiddler='git-server-settings' field='command' tooltip='Choose a new site title'>
+<option>Show status</option>/n<option>Show branches</option>/n<option>Clone to /home/pi5/junk/dillinger2</option>/n<option>Create working directory</option>/n<option>Create branch</option>/n<option>Checkout branch show</option>/n<option>Delete branch (soft)</option>/n<option>Delete branch (hard)</option></$select>
+

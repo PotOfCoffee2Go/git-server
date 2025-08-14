@@ -1,6 +1,6 @@
 created: 20250810033642060
-modified: 20250810033700128
+modified: 20250814095828594
 title: $:/SiteSubtitle
 type: text/vnd.tiddlywiki
 
-Configuration system for git-server
+@@margin-left:.5em; Interface to local git repositories@@

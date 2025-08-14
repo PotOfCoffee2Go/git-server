@@ -1,6 +1,6 @@
 created: 20180925155320737
 creator: Thomas Elmiger
-modified: 20250811113030057
+modified: 20250814125456788
 modifier: Thomas Elmiger
 tags: $:/tags/Stylesheet
 title: $:/plugins/telmiger/details/colours.css
@@ -11,6 +11,10 @@ type: text/vnd.tiddlywiki
 details {
    background-color: <<colour background>>;
    color: <<colour foreground>>;
+}
+
+details[open] {
+   padding-bottom: 0em;
 }
 
 details summaryxxx {

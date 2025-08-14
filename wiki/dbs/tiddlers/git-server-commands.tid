@@ -1,8 +1,28 @@
-caption: Command sets
+caption: Commands
 created: 20250813103309456
-modified: 20250813114415684
+modified: 20250815191015121
 title: git-server-commands
 type: text/vnd.tiddlywiki
+
+Show status
+
+```
+git status
+```
+
+Show branches
+
+```
+git branch
+```
+
+Clone to ${settings.workDir}
+
+```
+git clone ${settings.repoUrl} .
+git remote show ${settings.remote}
+git status
+```
 
 Create working directory
 
@@ -13,17 +33,35 @@ git remote show ${settings.remote}
 git status
 ```
 
-Checkout new branch
+Create branch
 
 ```
-git status
-git checkout -b ${settings.branch}
-git status
+git branch ${settings.branch}
+git branch
 ```
-Checkout existing branch
+
+Checkout branch ${settings.branch}
 
 ```
 git status
 git checkout ${settings.branch}
-git status
+git branch
+```
+
+Delete branch (soft)
+
+```
+git co ${settings.defaultBr}
+git branch
+git branch -d ${settings.branch}
+git branch
+```
+
+Delete branch (hard)
+
+```
+git co ${settings.defaultBr}
+git branch
+git branch -D ${settings.branch}
+git branch
 ```

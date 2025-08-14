@@ -1,6 +1,9 @@
 h3, h4 {
   color: #84C0F5;
 }
+pre code.hljs {
+  background: black;
+}
 .mono {
   font-family: monospace;
   font-size: .9em;

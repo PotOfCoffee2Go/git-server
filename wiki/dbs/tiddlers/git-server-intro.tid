@@ -1,31 +1,7 @@
 caption: Introduction
 created: 20250813062146316
-modified: 20250813181518308
+modified: 20250815180343296
 title: git-server-intro
 type: text/vnd.tiddlywiki
 
-Repository: @@.mono http://localhost:7005/dillinger.git@@
-
-Working directory: @@.mono /home/pi5/junk/dillinger@@ 
-
-Remote: @@.mono origin@@ <span style="margin-left:4em;" /> Branch: @@.mono poc2go@@ 
-
-@@.mono-q Command:@@ @@.mono-m Checkout new branch@@ 
-
-```
-$ git status
-On branch poc2go
-Your branch is up to date with 'origin/poc2go'.
-
-nothing to commit, working tree clean
-$ git checkout -b poc2go
-Error: Command failed: git checkout -b poc2go
-fatal: a branch named 'poc2go' already exists
-$ git status
-On branch poc2go
-Your branch is up to date with 'origin/poc2go'.
-
-nothing to commit, working tree clean
-
-```
-
+!!! Intro - to-do

@@ -1,3 +1,28 @@
+allowAnonymous: yes
+allowNetworkAccess: no
+caption: Configuration
+created: 20250814192218978
+layout: v1
+modified: 20250815155820538
+proxyPort: 7000
+repoPort: 7005
+title: git-server-config
+twdbsPort: 8082
+type: text/vnd.tiddlywiki
+
+<div class="mono" >
+
+| layout:|{{git-server-config!!layout}} |Must be "v1" for current release of git-server |
+| twdbsPort|{{git-server-config!!twdbsPort}} |Wiki interface to git-server system |
+| repoPort:|{{git-server-config!!repoPort}} |Performs the git commands |
+| proxyPort:|{{git-server-config!!proxyPort}} |Routes git commands to repoPort |
+| allowNetworkAccess:|{{git-server-config!!allowNetworkAccess}} |Allow Network Access? |
+| allowAnonymous:|{{git-server-config!!allowAnonymous}} |Allow writes to repositories without User passwords? |
+
+</div>
+
+
+```js
 /*\
  * A git-server configuration file
 \*/
@@ -45,3 +70,4 @@ const users = [
 // --------------------------------
 return { twdbsPort, repoPort, proxyPort, allowNetworkAccess, allowAnonymous, users, layout };
 }
+```

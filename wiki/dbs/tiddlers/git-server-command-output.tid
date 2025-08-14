@@ -1,0 +1,17 @@
+created: 20250813193610554
+modified: 20250816005845374
+title: git-server-command-output
+type: text/vnd.tiddlywiki
+
+@@.mono-m Show branches@@ 
+
+```
+$ git branch
+  another
+  another2
+  main
+  poc2go
+* show
+
+```
+

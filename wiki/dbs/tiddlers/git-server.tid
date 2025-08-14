@@ -1,50 +1,18 @@
 closer: poc2go-tab-closer
-command: Checkout new branch
+command: Checkout existing branch
 created: 20250810034229836
-list: git-server-intro git-server-settings git-server-commands
-modified: 20250813181515911
+list: git-server-home git-server-commands git-server-settings git-server-config git-server-help
+modified: 20250815190148935
 tags: 
 title: git-server
 type: text/vnd.tiddlywiki
 
-\define sendCommands()
-<$macrocall $name=git-server-io  topic='commands' filter={{git-server!!command}} sender="$(currentTiddler)$" />
-\end
-
-<style>
-.col3 { column-count:3; }
-.cmd-editbox {
-  width: 60%;
-}
-.cmd-dropdown {
-  margin: -2em 0 0 5em;
-}
-</style>
-
-!!! Git-server Interface
+!!! Git-server Dashboard
 
 This web page interfaces with git-server. Allows setting up configurations, creating repositories, building of common sequences of git commands and much more. 
 
-See @@.mono-m git-server@@ in action:
+<<tabs "[list[git-server!!closer]]" "git-server-home" "$:/state/tab/git-server-tabs">>
 
-<$keyboard key="enter" actions=<<sendCommands>> >
-@@.mono-q Command: <$edit-text tiddler="git-server" field="command" class="cmd-editbox"/>@@
-</$keyboard>
-
-@@.cmd-dropdown {{git-server-command-options}}@@
-<$button actions=<<sendCommands>> >Send</$button>
-
-<!---
-&nbsp;
-<$button actions=<<git-server resetTiddlers>> >
-Reset counter request
-</$button>
-
-<<list-links filter:"[prefix[Server Tiddler]sort[created]]" emptyMessage:" (No Server Tiddlers)" class:"col3">>
---->
-
-<<tabs "[list[git-server!!closer]]" "" "$:/state/tab/git-server-tabs">>
-
-<<tabs "[list[git-server!!list]]" "git-server-intro" "$:/state/tab/git-server-tabs">>
+<<tabs "[list[git-server!!list]]" "git-server-home" "$:/state/tab/git-server-tabs">>
 
 @@color:aqua;border:1px solid aqua;border-radius:6px;font-size:.9em; &nbsp;  [[Top|git-server]] &nbsp; @@

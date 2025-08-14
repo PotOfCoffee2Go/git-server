@@ -1,0 +1,30 @@
+created: 20250813192829535
+modified: 20250815174132472
+title: git-server-settings-display
+type: text/vnd.tiddlywiki
+
+<style>
+.setting-editbox {
+  width: 60%;
+}
+</style>
+<details><summary>@@.mono-q Directories@@ </summary>
+
+@@.mono-m Requires full path!@@ <br/><br/>
+
+@@.mono-q Repositories: <$edit-text tiddler="git-server-settings" field="reposDir" class="setting-editbox"/>@@
+<br/>
+@@.mono-q Git Working:&nbsp; <$edit-text tiddler="git-server-settings" field="workDir" class="setting-editbox"/>@@
+
+<br/>
+<br/>
+<hr class="poc2go-hr">
+
+</details>
+
+@@.mono-q Repository: <$edit-text tiddler="git-server-settings" field="repoUrl" class="setting-editbox"/>@@
+
+@@.mono-q Remote: <$edit-text tiddler="git-server-settings" field="remote"/>@@
+@@.mono-q Branch: <$edit-text tiddler="git-server-settings" field="branch"/>@@
+
+<hr class="poc2go-hr">

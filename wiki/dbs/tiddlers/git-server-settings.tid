@@ -1,0 +1,30 @@
+branch: show
+caption: Settings
+command: Show branches
+created: 20250813073223127
+defaultBr: main
+defaultRm: origin
+modified: 20250816005843870
+remote: origin
+repoUrl: http://localhost:7005/dillinger.git
+reposDir: /home/pi5/sites/git-server/repos
+tags: $:/tags/GitSettings
+testName: 
+title: git-server-settings
+type: text/vnd.tiddlywiki
+workDir: /home/pi5/junk/dillinger2
+
+Settings are in the fields of the tiddler [[Settings|git-server-settings]]
+
+<div class="mono">
+
+| reposDir:|{{git-server-settings!!reposDir}} |
+| repoUrl:|{{git-server-settings!!repoUrl}} |
+| workDir:|{{git-server-settings!!workDir}} |
+| branch:|{{git-server-settings!!branch}} |
+| remote:|{{git-server-settings!!remote}} |
+| command:|{{git-server-settings!!command}} |
+| defaultRm:|{{git-server-settings!!defaultRm}} |
+| defaultBr:|{{git-server-settings!!defaultBr}} |
+
+</div>

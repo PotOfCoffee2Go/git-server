@@ -1,0 +1,49 @@
+caption: Home
+created: 20250814191116732
+modified: 20250815191200455
+title: git-server-home
+type: text/vnd.tiddlywiki
+
+\define sendCommands()
+<$macrocall $name=git-server-io  topic='commands' filter='[[]]' sender="$(currentTiddler)$" />
+\end
+
+\define sendbroke()
+<$macrocall $name=git-server-io  topic='broke' filter='[[]]' sender="$(currentTiddler)$" />
+\end
+
+<style>
+.col3 { column-count:3; }
+.cmd-editbox {
+  width: 60%;
+}
+.cmd-dropdown {
+  margin: -2em 0 0 0;
+}
+</style>
+
+<$details open summary="Settings">
+
+{{git-server-settings-display}}
+
+</$details>
+
+@@.cmd-dropdown {{git-server-request}}@@
+<$button actions=<<sendCommands>> >Send</$button>
+
+<!--
+<$keyboard key="enter" actions=<<sendCommands>> >
+@@.mono-q Command: <$edit-text tiddler="git-server-settings" field="command" class="cmd-editbox"/>@@
+</$keyboard>
+-->
+
+{{git-server-command-output}}
+
+<!---
+&nbsp;
+<$button actions=<<git-server resetTiddlers>> >
+Reset counter request
+</$button>
+
+<<list-links filter:"[prefix[Server Tiddler]sort[created]]" emptyMessage:" (No Server Tiddlers)" class:"col3">>
+--->
