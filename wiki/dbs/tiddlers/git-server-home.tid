@@ -1,15 +1,11 @@
 caption: Home
 created: 20250814191116732
-modified: 20250815191200455
+modified: 20250816102029282
 title: git-server-home
 type: text/vnd.tiddlywiki
 
 \define sendCommands()
 <$macrocall $name=git-server-io  topic='commands' filter='[[]]' sender="$(currentTiddler)$" />
-\end
-
-\define sendbroke()
-<$macrocall $name=git-server-io  topic='broke' filter='[[]]' sender="$(currentTiddler)$" />
 \end
 
 <style>
@@ -28,8 +24,18 @@ type: text/vnd.tiddlywiki
 
 </$details>
 
+<details><summary>@@.mono-m Commit@@ </summary>
+
+{{git-server-settings-commit}}
+
+</details>
+
+<details open ><summary>@@.mono-m Commands@@ </summary>
+
 @@.cmd-dropdown {{git-server-request}}@@
 <$button actions=<<sendCommands>> >Send</$button>
+
+</details>
 
 <!--
 <$keyboard key="enter" actions=<<sendCommands>> >

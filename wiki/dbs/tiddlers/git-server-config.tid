@@ -3,71 +3,31 @@ allowNetworkAccess: no
 caption: Configuration
 created: 20250814192218978
 layout: v1
-modified: 20250815155820538
+modified: 20250816092252133
 proxyPort: 7000
 repoPort: 7005
 title: git-server-config
 twdbsPort: 8082
 type: text/vnd.tiddlywiki
 
+\define editfld(fld)
+<$edit-text tiddler="git-server-config" field="$fld$" class="cfg-editbox"/>
+\end
+
+<style>
+.cfg-editbox {
+  width:3em;
+}
+</style>
+
 <div class="mono" >
 
-| layout:|{{git-server-config!!layout}} |Must be "v1" for current release of git-server |
-| twdbsPort|{{git-server-config!!twdbsPort}} |Wiki interface to git-server system |
-| repoPort:|{{git-server-config!!repoPort}} |Performs the git commands |
-| proxyPort:|{{git-server-config!!proxyPort}} |Routes git commands to repoPort |
-| allowNetworkAccess:|{{git-server-config!!allowNetworkAccess}} |Allow Network Access? |
-| allowAnonymous:|{{git-server-config!!allowAnonymous}} |Allow writes to repositories without User passwords? |
+| layout:|<<editfld layout>> |Must be "v1" for current release |
+| twdbsPort|<<editfld twdbsPort>> |Wiki interface to git-server system |
+| repoPort:|<<editfld repoPort>> |Performs the git commands |
+| proxyPort:|<<editfld proxyPort>> |Local network access to repositories |
+| allowNetworkAccess:|<<editfld allowNetworkAccess>> |Allow Network Access? |
+| allowAnonymous:|<<editfld allowAnonymous>> |Do not require User/Passwords |
 
 </div>
 
-
-```js
-/*\
- * A git-server configuration file
-\*/
-exports.config = function config() {
-// Must be "v1" for current release of git-server
-const layout = "v1";
-
-// --------------------------------
-// Start of Configuration
-
-// TiddlyWiki Dasboard server comm port
-// Web interface to git-server system
-const twdbsPort = 8082;
-
-// Repository server comm port
-// Performs the git commands 
-// Is only available on 'localhost'
-const repoPort = 7005;
-
-// Proxy server comm port
-// Routes git commands to port above
-// Devices on network have access via this port
-const proxyPort = 7000;
-
-// Allow Network Access?
-//  true  - the proxy server above will be started
-//  false - the proxy server will not be started
-const allowNetworkAccess = false;
-
-// Allow writes to repositories for all requests 
-//  true  - user/password in not required
-//  false - user/password is required
-const allowAnonymous = true;
-
-// User/passwords to allow write to repositories 
-// Required to 'git push' to repositories
-//  when allowAnonymous = false;
-const users = [
-	{ "name": "jane", "password": "do3" },
-	{ "name": "roger", "password": "m00re" },
-	{ "name": "42", "password": "42" },
-];
-
-// End of configuration
-// --------------------------------
-return { twdbsPort, repoPort, proxyPort, allowNetworkAccess, allowAnonymous, users, layout };
-}
-```

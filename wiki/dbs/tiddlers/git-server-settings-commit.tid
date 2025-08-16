@@ -1,0 +1,21 @@
+created: 20250816094549764
+modified: 20250816101931204
+title: git-server-settings-commit
+type: text/vnd.tiddlywiki
+
+\define sendCommit()
+<$macrocall $name=git-server-io  topic='commit' filter='[[]]' sender="$(currentTiddler)$" />
+\end
+
+<style>
+.setting-editbox {
+  width: 60%;
+}
+.rm-br-editbox {
+  width: 8em;
+}
+</style>
+
+@@.mono-q Commit message: <$edit-text tiddler="git-server-settings" field="message" class=""/>@@
+<$button actions=<<sendCommit>> >Commit</$button>
+

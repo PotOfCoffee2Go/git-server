@@ -1,10 +1,11 @@
-branch: show
+branch: main
 caption: Settings
-command: Show branches
+command: Show status
 created: 20250813073223127
 defaultBr: main
 defaultRm: origin
-modified: 20250816005843870
+message: commit message
+modified: 20250816105209868
 remote: origin
 repoUrl: http://localhost:7005/dillinger.git
 reposDir: /home/pi5/sites/git-server/repos
@@ -26,5 +27,6 @@ Settings are in the fields of the tiddler [[Settings|git-server-settings]]
 | command:|{{git-server-settings!!command}} |
 | defaultRm:|{{git-server-settings!!defaultRm}} |
 | defaultBr:|{{git-server-settings!!defaultBr}} |
+| message:|{{git-server-settings!!message}} |
 
 </div>

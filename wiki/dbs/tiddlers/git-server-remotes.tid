@@ -1,0 +1,7 @@
+created: 20250816065239211
+modified: 20250816105209874
+title: git-server-remotes
+
+<$select tiddler='git-server-settings' field='remote' tooltip='Choose a remote'>
+<option>origin</option></$select>
+

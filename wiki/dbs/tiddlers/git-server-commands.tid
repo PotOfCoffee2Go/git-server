@@ -1,6 +1,6 @@
 caption: Commands
 created: 20250813103309456
-modified: 20250815191015121
+modified: 20250816103228316
 title: git-server-commands
 type: text/vnd.tiddlywiki
 
@@ -10,13 +10,25 @@ Show status
 git status
 ```
 
+Show commits
+
+```
+git log --oneline --graph --decorate --all -n 12
+```
+
 Show branches
 
 ```
 git branch
 ```
 
-Clone to ${settings.workDir}
+Show remote
+
+```
+git remote show ${settings.remote}
+```
+
+Clone
 
 ```
 git clone ${settings.repoUrl} .
@@ -40,10 +52,10 @@ git branch ${settings.branch}
 git branch
 ```
 
-Checkout branch ${settings.branch}
+Checkout branch
 
 ```
-git status
+git branch
 git checkout ${settings.branch}
 git branch
 ```

@@ -1,11 +1,14 @@
 created: 20250813192829535
-modified: 20250815174132472
+modified: 20250816101429170
 title: git-server-settings-display
 type: text/vnd.tiddlywiki
 
 <style>
 .setting-editbox {
   width: 60%;
+}
+.rm-br-editbox {
+  width: 8em;
 }
 </style>
 <details><summary>@@.mono-q Directories@@ </summary>
@@ -24,7 +27,5 @@ type: text/vnd.tiddlywiki
 
 @@.mono-q Repository: <$edit-text tiddler="git-server-settings" field="repoUrl" class="setting-editbox"/>@@
 
-@@.mono-q Remote: <$edit-text tiddler="git-server-settings" field="remote"/>@@
-@@.mono-q Branch: <$edit-text tiddler="git-server-settings" field="branch"/>@@
-
-<hr class="poc2go-hr">
+@@.mono-q Remote: <$edit-text tiddler="git-server-settings" field="remote" class="rm-br-editbox"/>@@ {{git-server-remotes}} &nbsp;
+@@.mono-q Branch: <$edit-text tiddler="git-server-settings" field="branch" class="rm-br-editbox"/>@@ {{git-server-branches}}
