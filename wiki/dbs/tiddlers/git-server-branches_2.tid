@@ -1,0 +1,7 @@
+created: 20250816201411708
+modified: 20250817193237342
+title: git-server-branches
+
+<$select tiddler='git-server-settings' field='branch' default='poc2go' tooltip='Choose a branch'>
+<option>another</option>/n<option>main</option>/n<option>origin</option>/n<option>poc2go</option></$select>
+

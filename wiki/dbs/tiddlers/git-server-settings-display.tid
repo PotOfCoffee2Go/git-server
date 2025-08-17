@@ -1,5 +1,5 @@
 created: 20250813192829535
-modified: 20250816101429170
+modified: 20250817161857970
 title: git-server-settings-display
 type: text/vnd.tiddlywiki
 
@@ -11,17 +11,16 @@ type: text/vnd.tiddlywiki
   width: 8em;
 }
 </style>
-<details><summary>@@.mono-q Directories@@ </summary>
 
-@@.mono-m Requires full path!@@ <br/><br/>
+<details><summary>@@.mono-m Directories@@ </summary>
+
+@@.mono-o Requires full path!@@ <br/><br/>
 
 @@.mono-q Repositories: <$edit-text tiddler="git-server-settings" field="reposDir" class="setting-editbox"/>@@
 <br/>
 @@.mono-q Git Working:&nbsp; <$edit-text tiddler="git-server-settings" field="workDir" class="setting-editbox"/>@@
 
-<br/>
-<br/>
-<hr class="poc2go-hr">
+<br/><br/><hr class="poc2go-hr">
 
 </details>
 

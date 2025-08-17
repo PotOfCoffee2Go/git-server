@@ -1,10 +1,11 @@
 created: 20250814130715357
-modified: 20250816105209851
+modified: 20250817193237322
 title: git-server-request
 type: text/vnd.tiddlywiki
 
 @@.mono-q command: @@
 <$select tiddler='git-server-settings' field='command' tooltip='Choose a new site title'>
+<option>Show short</option>
 <option>Show status</option>
 <option>Show commits</option>
 <option>Show branches</option>

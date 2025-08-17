@@ -1,11 +1,11 @@
-branch: main
+branch: poc2go
 caption: Settings
-command: Show status
+command: Show short
 created: 20250813073223127
 defaultBr: main
 defaultRm: origin
 message: commit message
-modified: 20250816105209868
+modified: 20250817193237342
 remote: origin
 repoUrl: http://localhost:7005/dillinger.git
 reposDir: /home/pi5/sites/git-server/repos

@@ -1,21 +1,18 @@
 created: 20250813193610554
-modified: 20250816105209861
+modified: 20250817193237334
 title: git-server-command-output
 type: text/vnd.tiddlywiki
 
-@@.mono-m Show status@@ 
+@@.mono-m Show short@@ 
 
 ```
-$ git status
-On branch main
-Your branch is up to date with 'origin/main'.
-
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-	modified:   stuff.txt
-
-no changes added to commit (use "git add" and/or "git commit -a")
+$ git status --short -b
+## poc2go...origin/poc2go
+A  a-new-file.txt
+AM another-file.txt
+ M more-stuff.text
+ M stuff.txt
+?? untracked-file.txt
 
 ```
 

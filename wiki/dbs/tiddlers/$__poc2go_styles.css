@@ -4,10 +4,12 @@ h3, h4 {
 pre code.hljs {
   background: black;
 }
+
 .mono {
   font-family: monospace;
   font-size: .9em;
 }
+
 .mono-q {
   font-family: monospace;
   font-size: .9em;
@@ -18,11 +20,65 @@ pre code.hljs {
   font-size: .9em;
   color: #CCD16B;
 }
+.mono-g {
+  font-family: monospace;
+  font-size: .9em;
+  color: #00e600;
+}
+.mono-dg {
+  font-family: monospace;
+  font-size: .9em;
+  color: #248f24;
+}
+.mono-r {
+  font-family: monospace;
+  font-size: .9em;
+  color: #ff6600;
+}
+.mono-o {
+  font-family: monospace;
+  font-size: .9em;
+  color: #ffb380;
+}
+.mono-p {
+  font-family: monospace;
+  font-size: .9em;
+  color: #ff66ff;
+}
+.mono-b {
+  font-family: monospace;
+  font-size: .9em;
+  color: #b3d9ff;
+}
+
 .mono-m {
   font-family: monospace;
   color: #84C0F5;
 }
 
+.files-border {
+  border: 1px solid #00ccff;
+  border-radius: 8px;
+  padding: 1em;
+}
+.fbtn-b {
+  font-size: .8em;
+  color: #b3d9ff;
+  border:1px solid aqua;
+  border-radius: 6px; 
+}
+.fbtn-r {
+  font-size: .8em;
+  color: #ff6600;
+  border:1px solid aqua;
+  border-radius: 6px; 
+}
+.fbtn-p {
+  font-size: .8em;
+  color: #ff66ff;
+  border:1px solid aqua;
+  border-radius: 6px; 
+}
 .poc2go-hr {
   margin: 0 5%;
   opacity: .4;

@@ -1,8 +1,14 @@
 caption: Commands
 created: 20250813103309456
-modified: 20250816103228316
+modified: 20250816165313828
 title: git-server-commands
 type: text/vnd.tiddlywiki
+
+Show short
+
+```
+git status --short -b
+```
 
 Show status
 

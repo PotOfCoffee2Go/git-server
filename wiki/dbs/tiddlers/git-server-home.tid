@@ -1,6 +1,6 @@
 caption: Home
 created: 20250814191116732
-modified: 20250816102029282
+modified: 20250817161918131
 title: git-server-home
 type: text/vnd.tiddlywiki
 
@@ -18,16 +18,18 @@ type: text/vnd.tiddlywiki
 }
 </style>
 
-<$details open summary="Settings">
+<$details open summary=Settings>
 
 {{git-server-settings-display}}
 
 </$details>
 
-<details><summary>@@.mono-m Commit@@ </summary>
+<details><summary>@@.mono-m Files@@</summary>
+<div class="files-border">
 
-{{git-server-settings-commit}}
+{{git-server-files-status}}
 
+</div>
 </details>
 
 <details open ><summary>@@.mono-m Commands@@ </summary>

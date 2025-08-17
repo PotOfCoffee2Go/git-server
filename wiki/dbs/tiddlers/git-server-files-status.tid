@@ -1,0 +1,17 @@
+created: 20250817013801729
+modified: 20250817193237356
+tags: 
+title: git-server-files-status
+type: text/vnd.tiddlywiki
+
+| tracking | file | index | work |h
+|<$button class="fbtn-r" actions=<<xxx>> >untrack</$button> |@@.mono-g a-new-file.txt@@ |<$button class="fbtn-r" actions=<<xxx>> >unstage</$button> @@.mono-y staged (added)@@ |<$button class="fbtn-r" actions=<<xxx>> >restore</$button> @@.mono-q matches@@ |
+|<$button class="fbtn-r" actions=<<xxx>> >untrack</$button> |@@.mono-dg another-file.txt@@ |<$button class="fbtn-r" actions=<<xxx>> >unstage</$button> @@.mono-y staged (added)@@ |<$button class="fbtn-b" actions=<<xxx>> >stage</$button> <$button class="fbtn-r" actions=<<xxx>> >restore</$button> @@.mono-q changed@@ |
+|<$button class="fbtn-r" actions=<<xxx>> >untrack</$button> |@@.mono-r more-stuff.text@@ |@@.mono-r not staged@@ |<$button class="fbtn-b" actions=<<xxx>> >stage</$button> <$button class="fbtn-r" actions=<<xxx>> >restore</$button> @@.mono-q changed@@ |
+|<$button class="fbtn-r" actions=<<xxx>> >untrack</$button> |@@.mono-r stuff.txt@@ |@@.mono-r not staged@@ |<$button class="fbtn-b" actions=<<xxx>> >stage</$button> <$button class="fbtn-r" actions=<<xxx>> >restore</$button> @@.mono-q changed@@ |
+|<$button class="fbtn-b" actions=<<xxx>> >track</$button> <$button class="fbtn-p" actions=<<xxx>> >ignore</$button> |@@.mono-o untracked-file.txt@@ | | |
+<details><summary>@@.mono-m Commit@@ </summary>
+
+{{git-server-settings-commit}}
+
+</details>
